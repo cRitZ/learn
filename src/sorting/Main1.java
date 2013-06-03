@@ -21,7 +21,7 @@ public class Main1 {
 
 	public static void main(String[] args) {
 		// TODO
-		//...
+		//..added to see merging ?!.
 
 		int[] numbers = getData();
 
