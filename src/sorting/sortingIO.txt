@@ -2,16 +2,18 @@
   | SORTING NUMBERS I/O FILE |
   ----------------------------
 
-############  INPUT  ###############
+##########   INPUT   ##########
 
 !EXCEPT the values to be tested!
-!DO NOT MODIFY ANYTHING in this section! 
+!BETTER NOT MODIFY ANYTHING in this section! 
 
 ------------------------------------
-#ARRAY_INPUT_STARTS_BELOW_THIS_LINE
+#ARRAY_INPUT_STARTS_BELOW_THIS_LINE#
 56 67
 768
+34f6 6
 76
+0
 #ARRAY_INPUT_ENDS_ABOVE_THIS_LINE#
 ------------------------------------
 
@@ -20,11 +22,11 @@
 ------------------------------------
 #OPTION_INPUT_STARTS_BELOW_THIS_LINE#
 
-#OPTION_OUTPUT_ENDS_ABOVE_THIS_LINE#
+#OPTION_INPUT_ENDS_ABOVE_THIS_LINE#
 ------------------------------------
 
 
-##########   OUTPUT   ##############
+##########   OUTPUT   ##########
 
 !Starting from THIS LINE you might
 !clean up old trials once in a while.

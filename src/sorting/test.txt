@@ -1,0 +1,18 @@
+testing
+------------------------------------
+SCRIU CE VREAU AICI 
+#ARRAY_INPUT_STARTS_BELOW_THIS_LINE#
+
+
+
+
+#ARRAY_INPUT_ENDS_ABOVE_THIS_LINE#
+------------------------------------
+SI AICI 
+1.Brute  2.Bubble  3.Insertion  4.Selection
+
+------------------------------------
+#OPTION_INPUT_STARTS_BELOW_THIS_LINE#
+
+#OPTION_INPUT_ENDS_ABOVE_THIS_LINE#
+------------------------------------
