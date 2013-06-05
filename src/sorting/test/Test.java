@@ -1,25 +1,26 @@
 package sorting.test;
 
-import java.util.Scanner;
+
 import sorting.util.*;
+import  java.io.*;
 
 public class Test {
 
 	/**
 	 * @param args
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception{
 
-		Scanner in2;
-		in2 = new Scanner(System.in);
-
-		if (ValidateInput.isGoodNumber(in2.nextLine())) {
-			System.out.println("ok");
-		} else {
-			System.out.println("not ok");
-		}
-
-		in2.close();
+		InputDataType data=new InputDataType();
+		data.array= new int[0];
+		data.option=0;
+		
+		
+		String filename="D:\\rtz\\java\\workspace\\learn\\src\\sorting\\test3.txt";
+		File f=new File(filename);
+		
+		FileTools.outputToFile(f,data);
+		
 	}
 
 }

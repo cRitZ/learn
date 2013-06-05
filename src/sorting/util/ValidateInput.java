@@ -1,22 +1,9 @@
 
 package sorting.util;
 
-import java.io.File;
 
 public class ValidateInput {
 
-	public static boolean isGoodFilename(String s){
-		/*
-		 * check if a given string is a valid FULLPATH filename  
-		 */
-		File f=new File(s);
-		if (f.exists()) {
-			return true;
-		}else{
-			return false;
-		}				
-	}
-	
 	public static boolean isGoodNumber(String s) {
 		/*
 		 *  check if a given string is a valid integer value,

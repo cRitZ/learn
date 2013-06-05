@@ -1,10 +1,8 @@
 package sorting;
 
-import java.io.FileReader;
-import java.io.BufferedReader;
 import sorting.util.*;
-import java.util.*;
-
+import java.io.File;
+import sorting.util.InputDataType;
 public class Main2 {
 
 	/*
@@ -49,25 +47,47 @@ public class Main2 {
 	 * (maybe previous outputs, irrelevant content)
 	 */
 
+	public static InputDataType getDATA(File f) throws Exception {
+		//check if content design is ok
+		InputDataType data= new InputDataType();
+		data.option=0;
+		data.array= new int[0];
+		
+		if (FileTools.isGoodIOFile(f)){
+			data =FileTools.getDataFromFile(f);
+		}else{
+			System.out.println("\""+f + "\" NOT A VALID INPUT FILE.");
+			//option (Y/N) to re-initialise the given 
+			//file to correct input/output design
+			FileTools.resetIOFile(f);
+		}
+		
+		
+		return data;
+	}
+	
 	public static void main(String[] args) throws Exception {
-		// TODO get input file and display it.
-		// TODO ValidateInput.isGoodInputFile ?, then HandleArray.getItFromFile.
-
+		//TODO polish initIOFile
+		//TODO validate option in outputToFile(inputData)
 		// if no arguments
 		if (args.length == 0) {
-			System.out.println("MISSING ARGUMENT! Specify .txt file to use.");
+			System.out.println("MISSING ARGUMENT! Specify file to use.");
 		} else {
 			// check if valid filename argument
-			if (ValidateInput.isGoodFilename(args[0])) {
-				//System.out.println(args[0] + " exista.");
-				int[] numbers = new int[HandleArray.getItFromFile(args[0]).length];
-				numbers = HandleArray.getItFromFile(args[0]);
-				HandleArray.screenIt(numbers);
+			if (FileTools.isGoodFilename(args[0])) {
+				File f= new File(args[0]);
+				
+				System.out.print(" array : ");HandleArray.screenIt(getDATA(f).array);
+				System.out.println(" option : "+getDATA(f).option);
+				
+				//outputToFile(f,getDATA(f));
+				
+				
 			} else {
-				System.out.println(args[0] + " nu exista.");
+				System.out.println("\""+args[0] + "\" DOES NOT EXIST.");
+				//TODO option (Y/N) to create new IO file maybe ?!
 			}
 		}
-
 	}
 
 }
