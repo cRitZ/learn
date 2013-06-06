@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
+import sorting.algorithms.*;
 
 public class FileTools {
 
@@ -17,36 +18,53 @@ public class FileTools {
 		 * specifications
 		 */
 		
+		/*
+		 * just finishing last touches, and it hit me that since the time i
+		 * started this task maybe i gathered enough information on the issue to
+		 * know (at least how to find out) how to avoid hand-writing this fucker
+		 * instead of cloning an actual maybe read-only backup txt file and be
+		 * done with it. hm..
+		 */
+		
+		
 		f.delete();
 		f.createNewFile();
 				
 		FileWriter fw= new FileWriter(f);
 		BufferedWriter bw = new BufferedWriter(fw);
-		
-		bw.newLine();bw.write(MarkerSet.inHeaderMarker);
+		bw.newLine();bw.write("      ----------------------------");
+		bw.newLine();bw.write("      | SORTING NUMBERS I/O FILE |");
+		bw.newLine();bw.write("      ----------------------------");
 		bw.newLine();
-		bw.newLine();
-		bw.newLine();bw.write(MarkerSet.arrayStartMarker);
-		bw.newLine();
-		bw.newLine();//bw.write(" integers separated by space and/or newline ");
-		bw.newLine();
-		bw.newLine();bw.write(MarkerSet.arrayEndMarker);
-		bw.newLine();
-		bw.newLine();bw.write(MarkerSet.separatorMarker);
-		bw.newLine();bw.write(MarkerSet.availableOptionsMarker);
-		bw.newLine();bw.write(MarkerSet.separatorMarker);
-		bw.newLine();
-		bw.newLine();bw.write(MarkerSet.optionStartMarker);
-		bw.newLine();
-		bw.newLine();//bw.write(" integer of the above options ");
-		bw.newLine();
-		bw.newLine();bw.write(MarkerSet.optionEndMarker);
-		bw.newLine();
-		bw.newLine();
-		bw.newLine();bw.write(MarkerSet.outHeaderMarker);
-		bw.newLine();
+		bw.newLine();bw.write("    ! EXCEPT THE VALUES TO BE TESTED  !");
+		bw.newLine();bw.write("    ! BETTER NOT MODIFY ANYTHING ELSE !");
 		bw.newLine();
 		
+		bw.newLine();
+		bw.newLine();bw.write(MarkerSet.IN_HEADER);
+		bw.newLine();
+		bw.newLine();bw.write(MarkerSet.ARRAY_START);
+		bw.newLine();
+		bw.newLine();bw.write("    <  array goes here, may delete this");
+		bw.newLine();
+		bw.newLine();bw.write(MarkerSet.ARRAY_END);
+		bw.newLine();
+		bw.newLine();bw.write(MarkerSet.SEPARATOR);
+		bw.newLine();bw.write(MarkerSet.AVAILABLE_OPTIONS);
+		bw.newLine();bw.write(MarkerSet.SEPARATOR);
+		bw.newLine();
+		bw.newLine();bw.write(MarkerSet.OPTION_START);
+		bw.newLine();
+		bw.newLine();bw.write("    <  option goes here, may delete this");
+		bw.newLine();
+		bw.newLine();bw.write(MarkerSet.OPTION_END);
+		bw.newLine();
+		bw.newLine();
+		bw.newLine();bw.write(MarkerSet.OUT_HEADER);
+		bw.newLine();bw.write("! starting with THIS_LINE ,you may delete !");
+		bw.newLine();bw.write("! anything. outputs will be ADDED !       !");
+		//bw.newLine();
+		bw.flush();
 		bw.close();	//cleanup
 		
 	}
@@ -74,7 +92,6 @@ public class FileTools {
 
 		if ((input.equals("y")) || (input.equals("Y"))) {
 			// proceed with input file re-initialisation
-			//File filename= new File(arg);
 			initIOFile(f);
 			System.out.println(" DONE. JUST ADD INPUT DATA.");
 		} else {
@@ -101,13 +118,13 @@ public class FileTools {
 		 * content, marker lines in place,
 		 */
 		String mark[] = new String[] { 
-				MarkerSet.arrayStartMarker,
-				MarkerSet.arrayEndMarker,
-				MarkerSet.optionStartMarker,
-				MarkerSet.optionEndMarker };
+				MarkerSet.ARRAY_START,
+				MarkerSet.ARRAY_END,
+				MarkerSet.OPTION_START,
+				MarkerSet.OPTION_END };
 	
-		// basically, just check if the file contains the mark lines in the
-		// appropriate order
+		// basically, just check if the file contains ALL the mark lines in the
+		// appropriate ORDER
 	
 		Scanner scnr= new Scanner(file);
 		Boolean ok=false;
@@ -133,28 +150,28 @@ public class FileTools {
 		/*
 		 * by the time this gets called, <filename> already checked ok for valid
 		 * input file (has the right markers in place)
-		 *
+		 * 
 		 * read data from the INPUT section from "filename"
 		 * 
 		 * array input data (hopefully some integer numbers) is located between
 		 * the following two marker lines:, all integers separated by space or
 		 * newline will be considered in the array.
 		 * 
-		 * #ARRAY_INPUT_STARTS_BELOW_THIS_LINE# <MarkerSet.arrayStartMarker>
+		 * #ARRAY_INPUT_STARTS_BELOW_THIS_LINE# 	<MarkerSet.ARRAY_START>
 		 * 
 		 * and
 		 * 
-		 * #ARRAY_INPUT_ENDS_ABOVE_THIS_LINE#	<MarkerSet.arrayEndMarker>
+		 * #ARRAY_INPUT_ENDS_ABOVE_THIS_LINE# 		<MarkerSet.ARRAY_END>
 		 * 
 		 * sorting option input data is located between the following two marker
 		 * lines:, only the first integer corresponding to available sorting
 		 * options will be considered.
 		 * 
-		 * #OPTION_INPUT_STARTS_BELOW_THIS_LINE#	<optionStartMarker>
+		 * #OPTION_INPUT_STARTS_BELOW_THIS_LINE# 	<MarkerSet.OPTION_START>
 		 * 
 		 * and
 		 * 
-		 * #OPTION_INPUT_ENDS_ABOVE_THIS_LINE#	<optionEndMarker>
+		 * #OPTION_INPUT_ENDS_ABOVE_THIS_LINE# 		<MarkerSet.OPTION_END>
 		 * 
 		 * returns an InputDataType element, 2 fields, (int[] .array) & (int
 		 * .option)
@@ -164,8 +181,8 @@ public class FileTools {
 		 * returns (<empty array>,<0>), otherwise
 		 */
 		
-		String startMark=MarkerSet.arrayStartMarker;
-		String endMark=MarkerSet.arrayEndMarker;
+		String startMark=MarkerSet.ARRAY_START;
+		String endMark=MarkerSet.ARRAY_END;
 		
 		FileReader fr = new FileReader(filename);
 		BufferedReader br = new BufferedReader(fr);
@@ -173,11 +190,11 @@ public class FileTools {
 		
 		// getting the array
 		
-		// skip file content until the line containing <arrayStartMarker>		
+		// skip file content until the line containing <ARRAY_START>		
 		do {
 			line = br.readLine();
 		} while (!(line.trim()).equals(startMark));
-		// get input data, until the line containing <arrayEndMarker>
+		// get input data, until the line containing <ARRAY_END>
 		List<Integer> lst = new ArrayList<Integer>();
 		
 		do {
@@ -199,44 +216,43 @@ public class FileTools {
 			scnr.close();		//cleanup
 		} while (!(line.trim()).equals(endMark));
 		
-		//at this point, the last br.readLine() was done on <arrayEndMarker>
+		//at this point, the last br.readLine() was done on <ARRAY_END>
 		
 		//continue with getting the sorting option
-		startMark=MarkerSet.optionStartMarker;
-		endMark=MarkerSet.optionEndMarker;
-		// skip file content until the line containing <optionStartMarker>		
+		startMark=MarkerSet.OPTION_START;
+		endMark=MarkerSet.OPTION_END;
+		// skip file content until the line containing <OPTION_START>		
 		do {
 			line = br.readLine();
 		} while (!(line.trim()).equals(startMark));
 		
-		/* getting the option
-		 * starting from this point in the file
-		 * meaning getting the first valid integer value corresponding to
-		 * an available option from the specified list of sorting options
+		/*
+		 * getting the option starting from this point in the file, meaning
+		 * getting the first valid integer value in this section
 		 */ 
 		int opt=0;	//if no valid option input, 0 is fine
 		Boolean notfound=true;
+		
 		do {
 			line = br.readLine();
 			Scanner scnr = new Scanner(line);
-			// Boolean notfound=true;
+			
 			while (scnr.hasNext() && notfound) {
 				String value = scnr.next();
 				if (ValidateInput.isGoodNumber(value)) {
-					// TODO option validation maybe should be treated in
+					// option validation maybe should be treated in
 					// outputToFile(inputData)
 					opt = Integer.parseInt(value.trim());
 					notfound = false;
 					break;
 				}
 			}
+			
 			scnr.close();		//cleanup
 		} while (!(line.trim()).equals(endMark)&&notfound);
-		
+		//no need looking after <OPTION_END> line
 		
 		br.close();				//cleanup
-		
-		
 		
 		// just clone the list to the an array
 	    int[] x = new int[lst.size()];
@@ -253,20 +269,129 @@ public class FileTools {
 		return data;
 	}
 
-	public static void outputToFile(File f, InputDataType data) throws Exception{
-		Scanner scnr=new Scanner(f);
-		
-		
-		//for now just output the data extracted from the input section
-		//no validation/modification done
-		
-		
-		while(scnr.hasNextLine()){
-			System.out.println("citit "+scnr.nextLine());
-		}
-		scnr.close();
-		FileWriter fw=new FileWriter(f);
+	public static void writeArrayToFile(File f,int[] x) throws Exception{
+		/*
+		 * just append the content of an array at THE END of the file, NOT on
+		 * new line by default, "( EMPTY ARRAY )" if the case
+		 */
+
+		FileWriter fw= new FileWriter(f,true);
 		BufferedWriter bw= new BufferedWriter(fw);
-		bw.close();	//cleanup
+		//bw.newLine();
+		bw.append("(");
+		if (x.length>0){
+			for (int i=0;i<x.length;i++){
+			bw.append(" "+x[i]);
+			}
+		}else {
+			bw.append(" EMPTY ARRAY.");
+		}
+		
+		bw.append(" )");
+		//bw.newLine();
+		bw.flush();
+		bw.close();
+		fw.close();
+	}
+	
+	
+	private static boolean isValidSortingOption(int opt){
+		/*
+		 * validation of the value input for the sorting option
+		 * this scenario just checks if it is 1,2,3 or 4.
+		 */
+		if((opt==1)||(opt==2)||(opt==3)||(opt==4)){
+			return true;
+		}
+		return false;
+		}
+	
+	public static void outputToFile(File f, InputDataType data) throws Exception{
+		/*
+		 * if (data.option = 1 or 2 or 3 or 4) and (data.array not empty) sort
+		 * array accordingly to 1.Brute 2.Bubble 3.Insertion 4.Selection and
+		 * then output results to file.
+		 * 
+		 * otherwise, output ISSUES to file as well.
+		 */
+		
+		FileWriter fw= new FileWriter(f,true);
+		BufferedWriter bw= new BufferedWriter(fw);
+
+		bw.newLine();bw.newLine();
+		bw.write(MarkerSet.SEPARATOR);
+		bw.newLine();bw.newLine();
+		bw.flush();
+		
+		if (data.array.length>0){
+			if (isValidSortingOption(data.option)){
+				//array ok, option ok
+				switch (data.option){
+				case 1: {
+					bw.write(" BRUTE ");
+					bw.flush();
+					writeArrayToFile(f,data.array);	//
+					bw.write(" -> ");
+					bw.flush();
+					writeArrayToFile(f, (new BruteSorter()).sortIt(data.array));
+					// nailed it first try. starting to love java. :)
+					break;
+				}
+				case 2: {
+					bw.write(" BUBBLE ");
+					bw.flush();
+					writeArrayToFile(f,data.array);	//
+					bw.write(" -> ");
+					bw.flush();
+					writeArrayToFile(f, (new BubbleSorter()).sortIt(data.array));
+					break;
+				}
+				case 3: {
+					bw.write(" INSERTION ");
+					bw.flush();
+					writeArrayToFile(f,data.array);	//
+					bw.write(" -> ");
+					bw.flush();
+					writeArrayToFile(f, (new InsertionSorter()).sortIt(data.array));
+					break;
+				}
+				case 4: {
+					bw.write(" SELECTION ");
+					bw.flush();
+					writeArrayToFile(f,data.array);	//
+					bw.write(" -> ");
+					bw.flush();
+					writeArrayToFile(f, (new SelectionSorter()).sortIt(data.array));
+					break;
+				}
+				}
+			}else{
+				//array ok, option not ok
+				bw.write(" ARRAY OK. ");
+				bw.flush();
+				writeArrayToFile(f, data.array);
+				bw.newLine();bw.newLine();
+				bw.write(" OPTION NOT OK.  1, 2, 3 OR 4 AVAILABLE ONLY!");
+				bw.flush();
+			}
+		}else{
+			//array not ok
+			bw.write(" ARRAY NOT OK. INPUT SOME INTEGERS! ");
+			bw.flush();
+			bw.newLine();bw.newLine();
+			if (isValidSortingOption(data.option)){
+				// array not ok, option ok
+				bw.write(" OPTION OK.");
+				bw.flush();
+			}else{
+				//array not ok, option not ok
+				bw.write(" OPTION NOT OK.  1, 2, 3 OR 4 AVAILABLE ONLY!");
+				bw.flush();
+			}
+		}
+		
+		bw.flush();
+		bw.close();
+		fw.close();
 	}
 }

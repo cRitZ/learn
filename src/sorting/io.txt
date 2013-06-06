@@ -1,0 +1,43 @@
+
+      ----------------------------
+      | SORTING NUMBERS I/O FILE |
+      ----------------------------
+
+    ! EXCEPT THE VALUES TO BE TESTED  !
+    ! BETTER NOT MODIFY ANYTHING ELSE !
+
+
+################   INPUT   ################
+
+#ARRAY_INPUT_STARTS_BELOW_THIS_LINE#
+23
+1 -6
+8 a 9 b -003     example
+02
+
+#ARRAY_INPUT_ENDS_ABOVE_THIS_LINE#
+
+-------------------------------------------
+1.Brute  2.Bubble  3.Insertion  4.Selection
+-------------------------------------------
+
+#OPTION_INPUT_STARTS_BELOW_THIS_LINE#
+
+only the first integer will be considered as option
+meaning if i type 23 first and then 1 or 2 or 3 or 4
+then 23 will be considered the value for input.
+see actual output below. option not ok.
+
+#OPTION_INPUT_ENDS_ABOVE_THIS_LINE#
+
+
+###############   OUTPUT   ################
+! starting with THIS_LINE ,you may delete !
+! anything. outputs will be ADDED !       !
+
+
+-------------------------------------------
+
+ ARRAY OK. ( 23 1 -6 8 9 -3 2 )
+
+ OPTION NOT OK.  1, 2, 3 OR 4 AVAILABLE ONLY!

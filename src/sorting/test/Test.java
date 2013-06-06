@@ -16,9 +16,10 @@ public class Test {
 		data.option=0;
 		
 		
-		String filename="D:\\rtz\\java\\workspace\\learn\\src\\sorting\\test3.txt";
+		String filename="D:\\rtz\\java\\workspace\\learn\\src\\sorting\\sortinggIO.txt";
 		File f=new File(filename);
 		
+		data=FileTools.getDataFromFile(f);
 		FileTools.outputToFile(f,data);
 		
 	}

@@ -1,0 +1,37 @@
+
+      ----------------------------
+      | SORTING NUMBERS I/O FILE |
+      ----------------------------
+
+    ! EXCEPT THE VALUES TO BE TESTED  !
+    ! BETTER NOT MODIFY ANYTHING ELSE !
+
+
+################   INPUT   ################
+
+#ARRAY_INPUT_STARTS_BELOW_THIS_LINE#
+
+    <  array goes here, may delete this
+
+#ARRAY_INPUT_ENDS_ABOVE_THIS_LINE#
+
+-------------------------------------------
+1.Brute  2.Bubble  3.Insertion  4.Selection
+-------------------------------------------
+
+#OPTION_INPUT_STARTS_BELOW_THIS_LINE#
+
+    <  option goes here, may delete this
+
+#OPTION_INPUT_ENDS_ABOVE_THIS_LINE#
+
+
+###############   OUTPUT   ################
+! starting with THIS_LINE ,you may delete !
+! anything. outputs will be ADDED !       !
+
+-------------------------------------------
+
+ ARRAY NOT OK. INPUT SOME INTEGERS! 
+
+ OPTION NOT OK.  1, 2, 3 OR 4 AVAILABLE ONLY!
