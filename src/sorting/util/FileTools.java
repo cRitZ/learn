@@ -38,7 +38,7 @@ public class FileTools {
 		bw.newLine();
 		bw.newLine();bw.write("    ! EXCEPT THE VALUES TO BE TESTED  !");
 		bw.newLine();bw.write("    ! BETTER NOT MODIFY ANYTHING ELSE !");
-		bw.newLine();
+		bw.newLine(); // TODO can be replaced with "\n" -> or even better String separator = System.getProperty("line.separator");
 		
 		bw.newLine();
 		bw.newLine();bw.write(MarkerSet.IN_HEADER);
@@ -85,6 +85,7 @@ public class FileTools {
 			System.out.print("\n" + f
 					+ "\n RESET CONTENT TO NEW INPUT FILE? Y/N ");
 			input = scnr.nextLine();
+			// TODO for this kind of comparison: http://docs.oracle.com/javase/7/docs/api/java/lang/String.html#equalsIgnoreCase(java.lang.String)
 		} while (!(input.equals("y")) && !(input.equals("Y"))
 				&& !(input.equals("n")) && !(input.equals("N")));
 
