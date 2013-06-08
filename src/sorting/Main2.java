@@ -3,6 +3,8 @@ package sorting;
 import sorting.util.*;
 import java.io.File;
 import sorting.util.InputDataType;
+
+// TODO leave white spaces between things
 public class Main2 {
 
 	/*
@@ -87,6 +89,8 @@ public class Main2 {
 											
 			} else {
 				System.out.println("\""+args[0] + "\" DOES NOT EXIST.");
+				// TODO -> alternative:
+				//System.out.println(String.format("\"%s\" DOES NOT EXIST!", args[0]));
 				//TODO option (Y/N) to create new IO file maybe ?!
 			}
 		}
