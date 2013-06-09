@@ -91,7 +91,7 @@ public class FileTools {
 
 		scnr.close(); // cleanup
 
-		if ((input.equals("y")) || (input.equals("Y"))) {
+		if ((input.equals("y")) || (input.equals("Y"))) { // TODO see the previous comparison
 			// proceed with input file re-initialisation
 			initIOFile(f);
 			System.out.println(" DONE. JUST ADD INPUT DATA.");

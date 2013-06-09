@@ -22,7 +22,7 @@ public class ValidateInput {
 		}
 
 		boolean ok = true; // checking if chars are numeric
-		for (int i = j; i < s.length(); i++) {
+		for (int i = j; i < s.length(); i++) {    // TODO - for know this is good, he have to improve later
 			switch (s.charAt(i)){
 			case '0' : {break;}
 			case '1' : {break;}
